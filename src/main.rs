@@ -1,10 +1,22 @@
 // Import the I/O library  
 use std::io; 
 
+// Import random
+use rand::Rng;
+
 fn main() {
     // Printing some messages to the user!
     println!("Guessing Game!");
     println!("Please enter your guess");
+
+    // Generate a secret number
+    // thread_rng() is a random number generator
+    // the gen_range() function creates a random number from a range
+    // The range is defined with start and end number => 1..=100, the numbers are included 
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    // Printing the secret number
+    println!("The secret number is {secret_number}");
 
     // Using the "let" keyword to define a new variable
     // Variables are immutable by default, so we add the "mut" keyword 
