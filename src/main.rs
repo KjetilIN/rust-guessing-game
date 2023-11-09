@@ -45,8 +45,12 @@ fn main() {
         // Rust has shadowing that allows us to use the same variable twice 
         // trim() removes leading white spaces
         // parse() convert the string to another type, in this case u32
-        // parse() may fail, and therefore we need to handle the Result type in case of an error
-        let guess: u32 = guess.trim().parse().expect("Please enter a number");
+        // parse() may fail, and therefore we need to handle the Result type in case of an error with expect 
+        // Or.. we do a match and continue the loop if there is an error
+        let guess: u32 = match guess.trim().parse(){
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         // Using println with the {} braces to create a f string. Can also use it with empty braces and add the variable as a comma behind:
         //      - println!("You guessed: {}", guess)
